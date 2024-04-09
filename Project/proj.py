@@ -5,7 +5,7 @@ from LinkedList import LinkedList
 userChoice = None
 taskList = LinkedList()
 
-while userChoice != ('q' or 'quit' or 'exit'):
+while userChoice not in ('q', 'quit', 'exit'):
     print("--------------------------------------------------------")
     print('Please choose one of the following options:')
     print('Print List')
@@ -17,7 +17,7 @@ while userChoice != ('q' or 'quit' or 'exit'):
     print(userChoice)
     
     
-    if userChoice == "print" or userChoice == "print list":
+    if userChoice in ("print", "print list"):
         node = taskList.head
         if node == None:
             print()
@@ -30,7 +30,7 @@ while userChoice != ('q' or 'quit' or 'exit'):
             print("--------------------------------------------------------")
     
     
-    if userChoice == "add" or userChoice == "add task":
+    if userChoice in ("add", "add task"):
         print("Name of task:")
         taskName = input().lower()
         # print("Task difficulty:")
@@ -44,7 +44,7 @@ while userChoice != ('q' or 'quit' or 'exit'):
 
         taskList.append(node)
 
-    elif userChoice == "remove task" or userChoice == "remove":
+    elif userChoice in ("remove task", "remove"):
         print("Name of task to remove:")
         taskRemove = input().lower()
         node = taskList.head
@@ -56,7 +56,7 @@ while userChoice != ('q' or 'quit' or 'exit'):
     elif userChoice == "sort":
         print('Sort by difficulty or time?')
         taskSort = input().lower()
-        if taskSort == "diff" or taskSort == "difficulty":
+        if taskSort in ("diff", "difficulty"):
             pass
         elif taskSort == "time":
             pass
