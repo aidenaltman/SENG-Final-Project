@@ -1,13 +1,31 @@
 def partition(taskList, taskListHead, TaskListTail):
-    node = taskListHead
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    node = taskListHead[1]
     tracker = 0
     while node.next != None:
         node = node.next
         tracker += 1
 
-    node = taskListHead
+    node = taskListHead[1]
     for i in range(tracker/2):
         node = node.next
+    pivot = node[1]
+
+    while True:
+        nodehead = taskListHead[1]
+        while nodehead < pivot:
+
+
 
     
 
