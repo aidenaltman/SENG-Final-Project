@@ -1,59 +1,71 @@
-def partition(taskList, taskListHead, TaskListTail):
+def partition(taskList, taskListHead, taskListTail):
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    node = taskListHead[1]
+    node = taskListHead
     tracker = 0
     while node.next != None:
         node = node.next
         tracker += 1
-
-    node = taskListHead[1]
-    for i in range(tracker/2):
+    print("test 2.1")
+    node = taskListHead
+    print(tracker)
+    for i in range(int(tracker//2)):
         node = node.next
-    pivot = node[1]
-
-    while True:
-        nodehead = taskListHead[1]
-        while nodehead < pivot:
-
-
-
+    pivot = node
+    print(pivot.data[1])
+    print("test 2.2")
     
+    while True:
+        nodehead = taskListHead
+        while nodehead.data[1] < pivot.data[1]:
+            nodehead = nodehead.next
+        nodetail = taskListTail
+        while nodetail.data[1] > pivot.data[1]:
+            nodetail = nodetail.prev
+
+        if nodehead.data[1] >= nodetail.data[1]:
+            break
+        else:
+            nodetail, nodehead = nodehead, nodetail
+            nodehead = nodehead.next
+            nodetail = nodetail.prev
+    print("test 2.3")
+    
+    return nodetail
 
 
 
 
 
-
-
-def quicksort(numbers, start_index, end_index):
+def quicksort(taskList, taskListHead, taskListTail):
     # Only attempt to sort the list segment if there are
     # at least 2 elements
-    if end_index <= start_index:
-        return
+    
+    print("TEST 1")
+    # if int(taskListTail.data[1]) <= int(taskListHead.data[1]):
+    #     return
 
     # Partition the list segment
-    high = partition(numbers, start_index, end_index)
+    print("Test 2")
+    high = partition(taskList, taskListHead, taskListTail)
+    print("Test 3")
 
     # Recursively sort the left segment
-    quicksort(numbers, start_index, high)
-
+    quicksort(taskList, taskListHead, high)
+    print("test 4")
     # Recursively sort the right segment
-    quicksort(numbers, high + 1, end_index)
+    quicksort(taskList, high.next, taskListTail)
 
+    node = taskList.head
+    if node == None:
+        print()
+        print("No Tasks")
+    else:
+        print("--------------------------------------------------------")
+        num = 1
+        while node != None:
+            print(f'{num}. {node.data[0]}')
+            print(f'\tDifficulty: {node.data[1]} Time: {node.data[2]}')
+            num +=1
+            node = node.next
+        print("--------------------------------------------------------")
 
-# Main program to test the quicksort algorithm.
-numbers = [12, 18, 3, 7, 32, 14, 91, 16, 8, 57]
-print('UNSORTED:', numbers)
-
-quicksort(numbers, 0, len(numbers) - 1)
-print('SORTED:', numbers)
