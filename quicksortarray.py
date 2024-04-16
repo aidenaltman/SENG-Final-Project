@@ -79,10 +79,11 @@ def quicksort(taskList, num):
 # node2 = Node(("test 2", 3, 40))
 # node3 = Node(("test 3", 6, 60))
 # node4 = Node(("test 4", 2, 110))
+# taskList.append(node4)
 # taskList.append(node1)
 # taskList.append(node2)
+
 # taskList.append(node3)
-# taskList.append(node4)
 
 # def printList(taskList):
 #     node = taskList.head

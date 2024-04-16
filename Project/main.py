@@ -1,6 +1,6 @@
 from Node import Node
 from LinkedList import LinkedList
-from quicksortarray import quicksort
+from sortDLL import sort_linked_list
 
 userChoice = None
 taskList = LinkedList()
@@ -46,12 +46,24 @@ while userChoice not in ('q', 'quit', 'exit', "5"):
         print("Task time (Minutes):")
         taskTime = input()
         
-        data = (taskName, taskDiff, taskTime)
-        node = Node(data)
+        node = Node((taskName, int(taskDiff), int(taskTime)))
         taskList.append(node)
+
+        # node = Node(("test1", 8, 110))
+        # taskList.append(node)
+        # node = Node(("test2", 3, 40))
+        # taskList.append(node)
+        # node = Node(("test3", 6, 80))
+        # taskList.append(node)
+        # node = Node(("test4", 2, 60))
+        # taskList.append(node)
+        # taskList.append(node1)
+        # taskList.append(node2)
+        # taskList.append(node3)
 
     elif userChoice in ("remove task", "remove", "3"):
         print("Name of task to remove:")
+        printList(taskList)
         taskRemove = input().lower()
         node = taskList.head
         
@@ -68,8 +80,13 @@ while userChoice not in ('q', 'quit', 'exit', "5"):
         print('Sort by difficulty or time?')
         taskSort = input().lower()
         if taskSort in ("diff", "difficulty"):
-            printList(quicksort(taskList, 1))
+            sortList = taskList
+            sortedList = sort_linked_list(sortList, 1)
+            printList(sortedList)
 
         elif taskSort == "time":
-            printList(quicksort(taskList, 2))
+            sortList = taskList
+            sortedList = sort_linked_list(sortList, 2)
+            printList(sortedList)
+            
 
